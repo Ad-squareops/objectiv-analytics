@@ -15,15 +15,17 @@ RUN mkdir -p $APP && \
     useradd --user-group --system --create-home --no-log-init notebook
 
 COPY docker/00_objectiv.sql  /services/
-COPY docker/0_objectiv_data.sql /services/
 COPY docker/1_metabase_init.sql /services
 COPY docker/2_metabase_data.sql /services
 
 COPY requirements.txt /services
 
 RUN . /services/venv/bin/activate && \
+    pip install --upgrade setuptools wheel
+
+RUN . /services/venv/bin/activate && \
     cd /services && \
-    pip install --no-use-pep517  sklearn && \
+    pip install --no-use-pep517 scikit-learn && \
     pip install -r requirements.txt
 
 

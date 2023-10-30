@@ -12,5 +12,4 @@ COPY validator $SERVICES/validator
 RUN cd  $SERVICES/validator && \
     yarn install
 
-
 CMD yarn serve

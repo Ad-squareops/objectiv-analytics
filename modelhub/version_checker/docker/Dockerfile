@@ -22,9 +22,9 @@ COPY requirements.txt $APP
 RUN pip install -r version_checker/requirements.txt
 
 
-COPY docker/gunicorn.conf.py /etc/
-COPY docker/nginx.conf /etc/nginx/
-COPY docker/entry_point.sh /services
+COPY gunicorn.conf.py /etc/
+COPY nginx.conf /etc/nginx/
+COPY entry_point.sh /services
 
 
 CMD /services/entry_point.sh
